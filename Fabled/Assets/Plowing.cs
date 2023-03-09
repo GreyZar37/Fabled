@@ -10,7 +10,7 @@ public class Plowing : MonoBehaviour
     [SerializeField] Tile hoverTile;
     [SerializeField] Tilemap tileMapHover;
 
-    [SerializeField] GameObject plant;
+    public GameObject plant;
     private void Start()
     {
         tilemap = TilemapManager.instance.interactableMap;

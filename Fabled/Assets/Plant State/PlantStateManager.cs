@@ -13,6 +13,11 @@ public class PlantStateManager : MonoBehaviour
     public PlantWholeState plantWholeState = new PlantWholeState();
     public PlantRottenState plantRottenState = new PlantRottenState();
 
+    public bool fullyGorwn;
+
+    public int amount;
+    public string CropName;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +25,7 @@ public class PlantStateManager : MonoBehaviour
         DaysLeft = DaysToGrow;
         currentState = GrowingState;
         currentState.EnterState(this);
+
     }
 
     // Update is called once per frame
@@ -37,5 +43,5 @@ public class PlantStateManager : MonoBehaviour
         currentState = state;
         state.EnterState(this);
     }
-
+    
 }

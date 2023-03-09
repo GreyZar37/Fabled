@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 
 {
-    float speed = 5;
+    public float speed = 6;
     float vertical;
     float horizontal;
     Rigidbody2D rb;
@@ -19,12 +19,20 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        horizontal = Input.GetAxis("Horizontal");
-        vertical = Input.GetAxis("Vertical");
+        horizontal = Input.GetAxisRaw("Horizontal");
+        vertical = Input.GetAxisRaw("Vertical");
 
-        rb.velocity = new Vector2(horizontal * speed, vertical * speed);
+        rb.velocity = new Vector2(horizontal, vertical).normalized * speed;
 
+        if(horizontal > 0)
+        {
+        transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
+        else if(horizontal < 0)
+        {
+            transform.rotation = Quaternion.Euler(0, 180, 0);
 
-       
+        }
+
     }
 }

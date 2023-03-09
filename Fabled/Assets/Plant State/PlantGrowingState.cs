@@ -22,6 +22,7 @@ public class PlantGrowingState : PlantBaseState
         else if(plant.DaysLeft == 0)
         {
             plant.spriteRenderer.sprite = plant.plantSprite[3];
+            plant.SwitchState(plant.plantWholeState);
 
         }
     }

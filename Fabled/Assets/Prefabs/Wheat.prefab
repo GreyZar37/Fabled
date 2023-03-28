@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 2117968778, guid: be3fb7a001718cb469e78adbe17fcefe, type: 3}
+  m_Sprite: {fileID: -2102717412, guid: c65f8dcefb9c98a47a309a39bd5262c7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -102,14 +102,15 @@ MonoBehaviour:
   DaysToGrow: 4
   DaysLeft: 0
   plantSprite:
-  - {fileID: 2117968778, guid: be3fb7a001718cb469e78adbe17fcefe, type: 3}
-  - {fileID: 2117968778, guid: be3fb7a001718cb469e78adbe17fcefe, type: 3}
-  - {fileID: 2117968778, guid: be3fb7a001718cb469e78adbe17fcefe, type: 3}
-  - {fileID: 2117968778, guid: be3fb7a001718cb469e78adbe17fcefe, type: 3}
+  - {fileID: -2102717412, guid: c65f8dcefb9c98a47a309a39bd5262c7, type: 3}
+  - {fileID: 1652778799, guid: 28c33db0043aa584daaba9d02a5991a2, type: 3}
+  - {fileID: -1987225578, guid: b9b71ef4caae5cf4eb070360083ba04a, type: 3}
+  - {fileID: 1519048094, guid: 2309c816534a0c94ab9e323e60b97018, type: 3}
   spriteRenderer: {fileID: 3837570953262334493}
   fullyGorwn: 0
   amount: 1
   CropName: Wheat
+  seeds: 2
 --- !u!61 &859241514918333268
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -127,7 +128,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.47333333, y: 0.42}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

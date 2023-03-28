@@ -76,12 +76,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1011044309, guid: be3fb7a001718cb469e78adbe17fcefe, type: 3}
+  m_Sprite: {fileID: -598647638, guid: 2b0bcf9fffa54e94c859510656c9faa0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 0.47, y: 0.415}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -102,14 +102,15 @@ MonoBehaviour:
   DaysToGrow: 4
   DaysLeft: 0
   plantSprite:
-  - {fileID: -1011044309, guid: be3fb7a001718cb469e78adbe17fcefe, type: 3}
-  - {fileID: -1011044309, guid: be3fb7a001718cb469e78adbe17fcefe, type: 3}
-  - {fileID: -1011044309, guid: be3fb7a001718cb469e78adbe17fcefe, type: 3}
-  - {fileID: -1011044309, guid: be3fb7a001718cb469e78adbe17fcefe, type: 3}
+  - {fileID: -598647638, guid: 2b0bcf9fffa54e94c859510656c9faa0, type: 3}
+  - {fileID: 739070456, guid: b992fdeced56ae04db0ca26db93c1a7d, type: 3}
+  - {fileID: 1801754497, guid: c68b98b9912f1ec418c4778147083f50, type: 3}
+  - {fileID: -2008517553, guid: 52effeb9e44d6a145842af28ddb5383b, type: 3}
   spriteRenderer: {fileID: 3837570953262334493}
   fullyGorwn: 0
   amount: 3
   CropName: Carrot
+  seeds: 1
 --- !u!61 &859241514918333268
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -127,8 +128,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 0.16, y: 0.16}
+    oldSize: {x: 0.27, y: 0.26}
+    newSize: {x: 0.47, y: 0.415}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0

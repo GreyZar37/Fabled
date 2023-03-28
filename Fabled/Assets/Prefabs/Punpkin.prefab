@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1208131829, guid: 709898875b297a74f984883c43d29787, type: 3}
+  m_Sprite: {fileID: -1909662571, guid: 2c68a49743ecd7d4caa4b9947bd01694, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -102,10 +102,10 @@ MonoBehaviour:
   DaysToGrow: 10
   DaysLeft: 0
   plantSprite:
-  - {fileID: -1433375046, guid: 709898875b297a74f984883c43d29787, type: 3}
-  - {fileID: 1047093867, guid: 709898875b297a74f984883c43d29787, type: 3}
-  - {fileID: -1883160506, guid: 709898875b297a74f984883c43d29787, type: 3}
-  - {fileID: 1208131829, guid: 709898875b297a74f984883c43d29787, type: 3}
+  - {fileID: -1909662571, guid: 2c68a49743ecd7d4caa4b9947bd01694, type: 3}
+  - {fileID: -1082686879, guid: 13d646d819f14194284acd01fb39f6d7, type: 3}
+  - {fileID: -724081524, guid: f573a275c057266488f15124bc1df343, type: 3}
+  - {fileID: 89296641, guid: ebe94fcff06e50949b477c9cebd59652, type: 3}
   spriteRenderer: {fileID: 3837570953262334493}
   fullyGorwn: 0
   amount: 1
@@ -127,7 +127,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.4225, y: 0.4075}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

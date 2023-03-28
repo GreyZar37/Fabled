@@ -1,7 +1,13 @@
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
+public enum seedsNeeded
+{
+    pumpkingsSeeds, carrotsSeeds, wheatSeeds, eggPlantSeeds, potatoesSeeds
+}
 public class PlantStateManager : MonoBehaviour
 {
+
 
     public int DaysToGrow;
     public int DaysLeft;
@@ -18,9 +24,14 @@ public class PlantStateManager : MonoBehaviour
     public int amount;
     public string CropName;
 
+    public seedsNeeded seeds;
     // Start is called before the first frame update
     void Start()
     {
+
+
+
+
         spriteRenderer = GetComponent<SpriteRenderer>();
         DaysLeft = DaysToGrow;
         currentState = GrowingState;

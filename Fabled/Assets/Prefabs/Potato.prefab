@@ -110,6 +110,7 @@ MonoBehaviour:
   fullyGorwn: 0
   amount: 2
   CropName: Potato
+  onTile: {fileID: 11400000, guid: 535447ecbd8c7fa43a398bd03e56cf0e, type: 2}
 --- !u!61 &859241514918333268
 BoxCollider2D:
   m_ObjectHideFlags: 0

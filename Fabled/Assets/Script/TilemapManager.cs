@@ -10,7 +10,7 @@ public class TilemapManager : MonoBehaviour
     [SerializeField] Tile interactableTile;
     public static TilemapManager instance;
     [SerializeField] Tile intereactedtile;
-
+    [SerializeField] Tile planted;
     public TileBase tile;
 
     // Start is called before the first frame update
@@ -54,19 +54,41 @@ public class TilemapManager : MonoBehaviour
 
     }
 
+    public TileBase getTile(Vector3Int position)
+    {
+        return interactableMap.GetTile(position);
+    }
+
     public void setInteracted(Vector3Int position, GameObject plant)
     {
-
-        if(tile.name == "Interactable")
+        
+        if (tile.name == "Plot")
         {
-            interactableMap.SetTile(position, intereactedtile);
-        }
-        else if (tile.name == "Plot")
-        {
+            
             Instantiate(plant,interactableMap.GetCellCenterWorld(position), Quaternion.identity);
+            interactableMap.SetTile(position, planted);
         }
 
     }
 
-   
+    public void setInteracted(Vector3Int position)
+    {
+
+
+        if (tile.name == "Interactable")
+        {
+            interactableMap.SetTile(position, intereactedtile);
+        }
+      
+
+    }
+    public void setInteracted(Vector3Int position, Tile tile)
+    {
+
+            interactableMap.SetTile(position, tile);
+       
+
+    }
+
+ 
 }

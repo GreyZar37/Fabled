@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using TMPro;
 public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler,IEndDragHandler
 {
-
+     public bool owned = true;
      public ItemScript item;
      public int count = 1;
 
@@ -19,11 +19,13 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler,IEnd
     public Transform parentAfterDrag;
     Canvas playerCanvas;
 
+    public Market shop;
 
     public void InitialiseItem(ItemScript newItem)
     {
         item = newItem;
         image.sprite = newItem.Image;
+        owned = true;
         refreshCount();
     }
 
@@ -31,6 +33,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler,IEnd
     {
         refreshCount();
         playerCanvas = GameObject.FindGameObjectWithTag("PlayerCanvas").GetComponent<Canvas>();
+        shop = GameObject.FindAnyObjectByType<Market>();
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -48,6 +51,8 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler,IEnd
     {
         image.raycastTarget = true;
         transform.SetParent(parentAfterDrag);
+        shop.CalculateSellValue();
+        shop.CalculateBuyValue();
 
     }
 

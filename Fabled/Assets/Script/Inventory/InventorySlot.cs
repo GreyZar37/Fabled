@@ -8,17 +8,22 @@ public class InventorySlot : MonoBehaviour, IDropHandler
     public Image image;
     public Color selectedColor, notSelectedColor;
 
+    
+
     private void Awake()
     {
         Deselect();
     }
     public void OnDrop(PointerEventData eventData)
     {
-        if(transform.childCount == 0)
+       
+        if (transform.childCount == 0)
         {
             InventoryItem inventoryItem = eventData.pointerDrag.GetComponent<InventoryItem>();
             inventoryItem.parentAfterDrag = transform;
+
         }
+    
 
 
     }

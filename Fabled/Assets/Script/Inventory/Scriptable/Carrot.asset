@@ -15,6 +15,8 @@ MonoBehaviour:
   type: 1
   actionType: 3
   plant: {fileID: 9167769748906526846, guid: 321c33062e8ba4d4bae4762a20fdd11f, type: 3}
+  Sellvalue: 5
+  BuyValue: 10
   range: {x: 5, y: 4}
   stackable: 1
   Image: {fileID: 206385049, guid: d7b2e74fd1ec14146afee3a98785120a, type: 3}

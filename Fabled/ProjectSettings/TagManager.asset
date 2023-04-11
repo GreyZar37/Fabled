@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Plant
   - Sign
+  - PlayerCanvas
+  - slot
+  - Inventory
   layers:
   - Default
   - TransparentFX

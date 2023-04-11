@@ -8,6 +8,7 @@ public enum seedsNeeded
 public class PlantStateManager : MonoBehaviour
 {
 
+    public int id;
 
     public int DaysToGrow;
     public int DaysLeft;

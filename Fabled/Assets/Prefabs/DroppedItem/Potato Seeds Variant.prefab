@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &6827356374943530699
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 16816126116519223, guid: 62e03428fe414d547a2a1e9084784cd2, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.77000004
+      objectReference: {fileID: 0}
+    - target: {fileID: 16816126116519223, guid: 62e03428fe414d547a2a1e9084784cd2, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.555
+      objectReference: {fileID: 0}
+    - target: {fileID: 881843525226767850, guid: 62e03428fe414d547a2a1e9084784cd2, type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 11400000, guid: 4b3b2be7c3b4f254e8787cbfc61d6518, type: 2}
+    - target: {fileID: 1342540426299751249, guid: 62e03428fe414d547a2a1e9084784cd2, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1342540426299751249, guid: 62e03428fe414d547a2a1e9084784cd2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -18.016125
+      objectReference: {fileID: 0}
+    - target: {fileID: 1342540426299751249, guid: 62e03428fe414d547a2a1e9084784cd2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -5.880993
+      objectReference: {fileID: 0}
+    - target: {fileID: 1342540426299751249, guid: 62e03428fe414d547a2a1e9084784cd2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1342540426299751249, guid: 62e03428fe414d547a2a1e9084784cd2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1342540426299751249, guid: 62e03428fe414d547a2a1e9084784cd2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1342540426299751249, guid: 62e03428fe414d547a2a1e9084784cd2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1342540426299751249, guid: 62e03428fe414d547a2a1e9084784cd2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1342540426299751249, guid: 62e03428fe414d547a2a1e9084784cd2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1342540426299751249, guid: 62e03428fe414d547a2a1e9084784cd2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1342540426299751249, guid: 62e03428fe414d547a2a1e9084784cd2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4510029316135490686, guid: 62e03428fe414d547a2a1e9084784cd2, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 2088259608, guid: c48d9ab4a527f214ebc3274d0f2adc99, type: 3}
+    - target: {fileID: 8425508898943852061, guid: 62e03428fe414d547a2a1e9084784cd2, type: 3}
+      propertyPath: m_Name
+      value: Potato Seeds Variant (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 62e03428fe414d547a2a1e9084784cd2, type: 3}

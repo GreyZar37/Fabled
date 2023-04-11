@@ -4,23 +4,25 @@ using UnityEngine.Tilemaps;
 
 public class Plowing : MonoBehaviour
 {
-    Inventory inventory;
+    [SerializeField] InventoryManager inventory;
 
     private Vector3Int previousMousePos = new Vector3Int();
     Tilemap tilemap;
     [SerializeField] Tile hoverTile;
     [SerializeField] Tilemap tileMapHover;
     [SerializeField] float plowingTime;
-    int seeds;
+
+    ItemScript currentItem;
 
     Animator anim;
 
-    public GameObject plant;
+    Equipment tools;
+
     private void Start()
     {
-        inventory = GetComponent<Inventory>();
         tilemap = TilemapManager.instance.interactableMap;
         anim = GetComponent<Animator>();
+        tools = GetComponent<Equipment>();
     }
 
     private void Update()
@@ -41,16 +43,23 @@ public class Plowing : MonoBehaviour
         {
             Vector3Int position = GetMousePosition();
 
-            if(TilemapManager.instance.getTile(position).name != null)
+            if(TilemapManager.instance.getTile(position) != null)
             {
-                if (TilemapManager.instance.getTile(position).name == "Interactable")
+                if (TilemapManager.instance.getTile(position).name == "Interactable" && tools.tool.actionType == ActionType.plow && tools.tool.type == ItemType.tool)
                 {
                     StartCoroutine(plowing());
 
                 }
-                else if (TilemapManager.instance.getTile(position).name == "Plot")
+                else if (TilemapManager.instance.getTile(position).name == "Plot" && tools.tool.actionType != ActionType.plow && tools.tool.type != ItemType.tool)
                 {
-                    StartCoroutine(Plant());
+                    currentItem = inventory.GetSelectedItem(true);
+
+                    if (currentItem != null)
+                    {
+                        if (currentItem.type == ItemType.seed)
+                            StartCoroutine(Plant());
+                    }
+                    
                 }
             }
             
@@ -81,76 +90,26 @@ public class Plowing : MonoBehaviour
 
     IEnumerator Plant()
     {
-        Vector3Int position = GetMousePosition();
+
+      Vector3Int position = GetMousePosition();
+
+
 
         if (TilemapManager.instance.interactable(position))
-        {
-           seeds = PlantIt(plant.GetComponent<PlantStateManager>());
+                {
 
-            if(seeds > 0)
-            {
-                PlayerMovement.currentPlayerState = playerState.planting;
-                anim.SetTrigger("Planting");
-                TilemapManager.instance.setInteracted(position, plant);
-            }
-        }
+                    PlayerMovement.currentPlayerState = playerState.planting;
+                    anim.SetTrigger("Planting");
+                    TilemapManager.instance.setInteracted(position, currentItem.plant);
 
+                }
+        
         yield return new WaitForSeconds(plowingTime);
-        if(seeds > 0)
-        {
-            PlayerMovement.currentPlayerState = playerState.idle;
-        }
-        inventory.refreashUI();
+       
+     
+        PlayerMovement.currentPlayerState = playerState.idle;
     }
 
-    public int PlantIt(PlantStateManager plant)
-    {
-        switch (plant.seeds)
-        {
-            case seedsNeeded.pumpkingsSeeds:
-                if (inventory.pumpkinsSeeds > 0)
-                {
-                    inventory.pumpkinsSeeds--;
-                    return inventory.pumpkinsSeeds + 1;
-                }
-                break;
-            case seedsNeeded.carrotsSeeds:
-                if (inventory.carrotsSeeds > 0)
-                {
-                    inventory.carrotsSeeds--;
-                    return inventory.carrotsSeeds + 1;
+ 
 
-                }
-
-
-                break;
-            case seedsNeeded.wheatSeeds:
-                if (inventory.wheatSeeds > 0)
-                {
-                    inventory.wheatSeeds--;
-                    return inventory.wheatSeeds + 1;
-
-                }
-
-                break;
-            case seedsNeeded.eggPlantSeeds:
-                if (inventory.eggPlantSeeds > 0)
-                {
-                    inventory.eggPlantSeeds--;
-                    return inventory.eggPlantSeeds +1 ;
-                }
-
-                break;
-            case seedsNeeded.potatoesSeeds:
-                if (inventory.potatoesSeeds > 0)
-                {
-                    inventory.potatoesSeeds--;
-                    return inventory.potatoesSeeds + 1;
-                }
-                break;
-
-
-        }
-        return 0;
-    }
 }

@@ -5,12 +5,13 @@ using UnityEngine.Tilemaps;
 
 public class HarvestingScp : MonoBehaviour
 {
+    public InventoryManager inventoryManager;
+    public ItemScript[] itemsToPickUp;
 
     public GameObject currentPlant;
 
     public Texture2D slectedtCursor;
 
-    public Inventory inv;
     Tilemap tilemap;
 
     Animator anim;
@@ -45,38 +46,30 @@ public class HarvestingScp : MonoBehaviour
 
         if (hit.transform != null)
         {
-            if (hit.transform.tag == "Plant" && hit.transform.GetComponent<PlantStateManager>().fullyGorwn && distance <= 1)
+            if(hit.transform.GetComponent<PlantStateManager>() != null)
             {
-
-                currentPlant = hit.transform.gameObject;
-                PlantStateManager plantstats = currentPlant.GetComponent<PlantStateManager>();
-
-                Cursor_.currentCursor = slectedtCursor;
-                if (Input.GetMouseButtonDown(1) && PlayerMovement.currentPlayerState == playerState.idle)
+                if (hit.transform.tag == "Plant" && hit.transform.GetComponent<PlantStateManager>().fullyGorwn && distance <= 1)
                 {
-                    StartCoroutine(harvesting(hit, plantstats));
-                    Cursor_.currentCursor = Cursor_.normalCursor;
 
+                    currentPlant = hit.transform.gameObject;
+                    PlantStateManager plantstats = currentPlant.GetComponent<PlantStateManager>();
+
+                    Cursor_.currentCursor = slectedtCursor;
+                    if (Input.GetMouseButtonDown(1) && PlayerMovement.currentPlayerState == playerState.idle)
+                    {
+                        StartCoroutine(harvesting(hit, plantstats));
+                        Cursor_.currentCursor = Cursor_.normalCursor;
+
+                    }
                 }
             }
+            
             else
             {
                 currentPlant = null;
                 Cursor_.currentCursor = Cursor_.normalCursor;
             }
 
-            if (hit.transform.tag == "Sign" )
-            {
-                print("xD");
-                if (Input.GetMouseButtonDown(1))
-                {
-                    hit.transform.gameObject.GetComponent<SwitchCrops>().Switch(-1);
-                }
-                if (Input.GetMouseButtonDown(0))
-                {
-                    hit.transform.gameObject.GetComponent<SwitchCrops>().Switch(1);
-                }
-            }
         
 
 
@@ -92,7 +85,7 @@ public class HarvestingScp : MonoBehaviour
 
             anim.SetTrigger("Harvesting");
 
-            inv.addCrop(plantstats.CropName, plantstats.amount);
+            pickupItem(plantstats.id);
             Destroy(hit.transform.gameObject);
             yield return new WaitForSeconds(harvestingTime);
             PlayerMovement.currentPlayerState = playerState.idle;
@@ -105,4 +98,19 @@ public class HarvestingScp : MonoBehaviour
         return tilemap.WorldToCell(mouseWorldPos);
     }
 
+
+
+    public void pickupItem(int id)
+    {
+        bool result = inventoryManager.AddItem(itemsToPickUp[id]);
+        
+        if(result == true)
+        {
+
+        }
+        else
+        {
+
+        }
+    }
 }

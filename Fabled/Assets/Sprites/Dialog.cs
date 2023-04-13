@@ -8,8 +8,10 @@ public class Dialog : MonoBehaviour
 {
 
     public TextMeshProUGUI textDisplay;
+
     public string[] sentences;
     int index;
+
     public float typingSpeed;
 
     public AudioClip[] wolfSpeak;
@@ -50,6 +52,7 @@ public class Dialog : MonoBehaviour
         }
     }
 
+  
     public void nextSentence()
     {
         continuebutton.enabled = false;
@@ -66,7 +69,6 @@ public class Dialog : MonoBehaviour
             DialogPanel.SetActive(false);
             textDisplay.text = "";
             continuebutton.enabled = false;
-
         }
     }
 }

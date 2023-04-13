@@ -5,9 +5,11 @@ using UnityEngine;
 public class AudioManager: MonoBehaviour
 {
     public static AudioSource sfxSource;
-    private void Start()
+  
+    private void Awake()
     {
         sfxSource = GetComponent<AudioSource>();
+
     }
     public static void playSound(AudioClip[] clip, float volume)
     {

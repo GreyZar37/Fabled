@@ -41,8 +41,8 @@ public class DayAndNight : MonoBehaviour
     {
            currentTime = wholeDay *60;
 
-        Light.color = Color.Lerp(dayColor, nightColor, Mathf.PingPong(Time.time / (wholeDay * 30), 1));
-        flashLight.color = Color.Lerp(nightColor, dayColor, Mathf.PingPong(Time.time / (wholeDay * 30), 1));
+        Light.color = dayColor;
+        flashLight.color = nightColor;
     }
 
     // Update is called once per frame
@@ -56,35 +56,37 @@ public class DayAndNight : MonoBehaviour
 
             Light.color = Color.Lerp(dayColor, nightColor, Mathf.PingPong(Time.time / (wholeDay * 30), 1));
             flashLight.color = Color.Lerp(nightColor, dayColor, Mathf.PingPong(Time.time / (wholeDay * 30), 1));
+
+            if (currentTime < 0)
+            {
+                currentTime = wholeDay * 60;
+                day++;
+            }
+
+            if (raining == false && day % 3 == 0)
+            {
+                raining = true;
+                rain.Play();
+                lastSong = AudioManager.musicSource.clip;
+                AudioManager.musicSource.clip = RainSong;
+                AudioManager.musicSource.Play();
+
+                songChanged = true;
+            }
+            else if (raining == true && songChanged == true && day % 3 != 0)
+            {
+                AudioManager.musicSource.clip = lastSong;
+                AudioManager.musicSource.Play();
+                raining = false;
+                rain.Stop();
+                songChanged = false;
+            }
         }
 
        
 
 
 
-        if (currentTime < 0)
-        {
-            currentTime = wholeDay * 60;
-            day++;
-        }
-
-        if(raining == false && day % 3 == 0)
-        {
-            raining = true;
-            rain.Play();
-            lastSong = AudioManager.musicSource.clip;
-            AudioManager.musicSource.clip = RainSong;
-            AudioManager.musicSource.Play();
-
-            songChanged = true;
-        }
-        else if(raining == true && songChanged == true && day % 3 != 0)
-        {
-                AudioManager.musicSource.clip = lastSong;
-                AudioManager.musicSource.Play();
-                raining = false;
-                rain.Stop();
-                songChanged = false;
-        }
+        
     }
 }

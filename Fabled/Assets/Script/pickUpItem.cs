@@ -7,7 +7,7 @@ public class pickUpItem : MonoBehaviour
     InventoryManager inventoryManager;
     public ItemScript item;
 
-
+    [SerializeField] AudioClip pickUpSound;
     private void Awake()
     {
         inventoryManager = GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventoryManager>();
@@ -22,6 +22,7 @@ public class pickUpItem : MonoBehaviour
     {
         if(collision.tag == "Player")
         {
+            AudioManager.playSound(pickUpSound, 1f);
             inventoryManager.AddItem(item);
             Destroy(gameObject);
         }

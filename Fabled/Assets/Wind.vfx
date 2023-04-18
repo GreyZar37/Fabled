@@ -1307,7 +1307,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Gradient, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"colorKeys":[{"color":{"r":1.0,"g":1.0,"b":1.0,"a":1.0},"time":0.0},{"color":{"r":1.0,"g":1.0,"b":1.0,"a":1.0},"time":1.0}],"alphaKeys":[{"alpha":0.0,"time":0.0},{"alpha":0.003921568859368563,"time":0.529411792755127},{"alpha":0.0,"time":1.0}],"gradientMode":0}'
+      m_SerializableObject: '{"colorKeys":[{"color":{"r":0.7490196228027344,"g":0.7490196228027344,"b":0.7490196228027344,"a":1.0},"time":0.014709697104990483},{"color":{"r":0.34117648005485537,"g":0.34117648005485537,"b":0.34117648005485537,"a":1.0},"time":0.502937376499176},{"color":{"r":1.0,"g":1.0,"b":1.0,"a":1.0},"time":1.0}],"alphaKeys":[{"alpha":0.0,"time":0.0},{"alpha":0.24313725531101228,"time":0.529411792755127},{"alpha":0.0,"time":1.0}],"gradientMode":0}'
     m_Space: 2147483647
   m_Property:
     name: Color
@@ -1569,7 +1569,7 @@ MonoBehaviour:
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
   m_UIPosition: {x: 0, y: 0}
-  m_UICollapsed: 1
+  m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots: []
   m_OutputSlots:

@@ -18,6 +18,10 @@ public class Plowing : MonoBehaviour
 
     Equipment tools;
 
+    [SerializeField] AudioClip plowingSound;
+    [SerializeField] AudioClip plantingSound;
+
+
     private void Start()
     {
         tilemap = TilemapManager.instance.interactableMap;
@@ -39,7 +43,7 @@ public class Plowing : MonoBehaviour
         float distance = Vector2.Distance(Camera.main.ScreenToWorldPoint(Input.mousePosition), transform.position);
 
 
-        if (Input.GetMouseButtonDown(0) && distance <= 1 && PlayerMovement.currentPlayerState == playerState.idle)
+        if (Input.GetMouseButtonDown(0) && distance <= 3 && PlayerMovement.currentPlayerState == playerState.idle && GameManager.Instance.state == gameState.playing)
         {
             Vector3Int position = GetMousePosition();
 
@@ -52,12 +56,16 @@ public class Plowing : MonoBehaviour
                 }
                 else if (TilemapManager.instance.getTile(position).name == "Plot" && tools.tool.actionType != ActionType.plow && tools.tool.type != ItemType.tool)
                 {
-                    currentItem = inventory.GetSelectedItem(true);
+                    currentItem = inventory.GetSelectedItem(false);
 
                     if (currentItem != null)
                     {
+
                         if (currentItem.type == ItemType.seed)
+                        {
+                            currentItem = inventory.GetSelectedItem(true);
                             StartCoroutine(Plant());
+                        }
                     }
                     
                 }
@@ -79,6 +87,7 @@ public class Plowing : MonoBehaviour
 
         if (TilemapManager.instance.interactable(position))
         {
+            AudioManager.playSound(plowingSound, 1);
             PlayerMovement.currentPlayerState = playerState.plowing;
             anim.SetTrigger("Plowing");
             TilemapManager.instance.setInteracted(position);
@@ -90,13 +99,13 @@ public class Plowing : MonoBehaviour
 
     IEnumerator Plant()
     {
-
       Vector3Int position = GetMousePosition();
 
 
 
         if (TilemapManager.instance.interactable(position))
                 {
+            AudioManager.playSound(plantingSound,1f);
 
                     PlayerMovement.currentPlayerState = playerState.planting;
                     anim.SetTrigger("Planting");

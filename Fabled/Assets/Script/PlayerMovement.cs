@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     Animator anim;
     [SerializeField] GameObject runningSystem;
 
-
+    [SerializeField] AudioClip stepSound;
     public static playerState currentPlayerState = playerState.idle;
 
     // Start is called before the first frame update
@@ -30,23 +30,30 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        if(currentPlayerState == playerState.idle)
+        if(GameManager.Instance.state == gameState.playing)
         {
-
-            horizontal = Input.GetAxisRaw("Horizontal");
-            vertical = Input.GetAxisRaw("Vertical");
-
-
-
-            if (horizontal > 0)
+            if (currentPlayerState == playerState.idle)
             {
-                transform.rotation = Quaternion.Euler(0, 0, 0);
+
+                horizontal = Input.GetAxisRaw("Horizontal");
+                vertical = Input.GetAxisRaw("Vertical");
+
+
+
+                if (horizontal > 0)
+                {
+                    transform.rotation = Quaternion.Euler(0, 0, 0);
+                }
+                else if (horizontal < 0)
+                {
+                    transform.rotation = Quaternion.Euler(0, 180, 0);
+
+                }
             }
-            else if (horizontal < 0)
+            else
             {
-                transform.rotation = Quaternion.Euler(0, 180, 0);
-
+                horizontal = 0;
+                vertical = 0;
             }
         }
         else
@@ -69,5 +76,10 @@ public class PlayerMovement : MonoBehaviour
 
         }
 
+    }
+
+    public void playStepSound()
+    {
+        AudioManager.playSound(stepSound, 0.5f);
     }
 }

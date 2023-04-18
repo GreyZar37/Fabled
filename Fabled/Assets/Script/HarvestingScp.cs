@@ -23,7 +23,7 @@ public class HarvestingScp : MonoBehaviour
 
     [SerializeField] Tile intereactedtile;
 
-
+    [SerializeField] AudioClip harvestingSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -83,6 +83,7 @@ public class HarvestingScp : MonoBehaviour
             TilemapManager.instance.setInteracted(plantPos, intereactedtile);
             PlayerMovement.currentPlayerState = playerState.harvesting;
 
+            AudioManager.playSound(harvestingSound, 1f);
             anim.SetTrigger("Harvesting");
 
             pickupItem(plantstats.id);

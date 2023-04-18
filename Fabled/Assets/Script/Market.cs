@@ -1,9 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
 using TMPro;
+using UnityEngine;
 public class Market : MonoBehaviour
 {
     public InventoryManager inventoryManager;
@@ -11,9 +9,11 @@ public class Market : MonoBehaviour
     public GameObject PlayerStats;
     public GameObject PlayerInventory;
 
+    public GameObject[] itemsForSale;
+
 
     public InventorySlot[] buySlots;
-    
+
 
     public InventorySlot[] sellSlots;
 
@@ -24,9 +24,13 @@ public class Market : MonoBehaviour
     public TextMeshProUGUI buyValueText;
 
     public TextMeshProUGUI playerMoneyText;
+    public float refreashTimer;
+    public GameObject InventoryItemPrefab;
 
     public int sellValue;
     public int buyValue;
+
+    public AudioClip buySound;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         shopPanel.SetActive(true);
@@ -45,7 +49,8 @@ public class Market : MonoBehaviour
 
     private void Start()
     {
-    
+      
+        InvokeRepeating("refreashShop", 0 , refreashTimer);
     }
     private void Update()
     {
@@ -57,7 +62,7 @@ public class Market : MonoBehaviour
     }
     public void CalculateSellValue()
     {
-      
+
         sellValue = 0;
         itemsSelling.Clear();
         for (int i = 0; i < sellSlots.Length; i++)
@@ -87,7 +92,7 @@ public class Market : MonoBehaviour
                     }
                 }
             }
-          
+
         }
     }
 
@@ -114,15 +119,18 @@ public class Market : MonoBehaviour
         {
             GameManager.Instance.money += item.item.Sellvalue * item.count;
             Destroy(item.gameObject);
-           
+
         }
         sellValue = 0;
         itemsSelling.Clear();
+        AudioManager.playSound(buySound, 1f);
     }
 
     public void buy()
     {
-        if(GameManager.Instance.money >= buyValue)
+        AudioManager.playSound(buySound, 1f);
+
+        if (GameManager.Instance.money >= buyValue)
         {
             foreach (var item in itemsBuying)
             {
@@ -132,13 +140,14 @@ public class Market : MonoBehaviour
             }
             CalculateBuyValue();
         }
-        
+
     }
 
     void returnItemToShopSlots()
     {
         foreach (var item in itemsBuying)
         {
+
             if (!item.owned)
             {
                 for (int i = 0; i < buySlots.Length; i++)
@@ -154,5 +163,31 @@ public class Market : MonoBehaviour
         buyValue = 0;
         itemsBuying.Clear();
     }
+
+    void refreashShop()
+    {
+        for (int i = 0; i < buySlots.Length; i++)
+        {
+          
+            InventoryItem item = buySlots[i].GetComponentInChildren<InventoryItem>();
+            if (item != null)
+            {
+                itemsBuying.Remove(inventoryManager.inventorySlots[i].GetComponentInChildren<InventoryItem>());
+                Destroy(item.gameObject);
+            }
+        }
+
+
+        for (int i = 0; i < itemsForSale.Length; i++)
+        {
+            Instantiate(itemsForSale[i], buySlots[i].transform);
+        }
+        for (int i = itemsForSale.Length; i < itemsForSale.Length *2; i++)
+        {
+            Instantiate(itemsForSale[i- itemsForSale.Length], buySlots[i].transform);
+        }
+
+    }
+
 
 }

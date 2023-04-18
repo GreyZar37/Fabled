@@ -10,8 +10,8 @@ public class PlantStateManager : MonoBehaviour
 
     public int id;
 
-    public int DaysToGrow;
-    public int DaysLeft;
+    public float TimeToGrow;
+    public float currentGrowTime;
     public Sprite[] plantSprite = new Sprite[4];
     public SpriteRenderer spriteRenderer;
 
@@ -31,11 +31,9 @@ public class PlantStateManager : MonoBehaviour
     {
 
 
-
+        currentState = GrowingState;
 
         spriteRenderer = GetComponent<SpriteRenderer>();
-        DaysLeft = DaysToGrow;
-        currentState = GrowingState;
         currentState.EnterState(this);
 
     }
@@ -43,10 +41,8 @@ public class PlantStateManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            DaysLeft -= 1;
-        }
+        currentGrowTime += Time.deltaTime;
+     
         currentState.UpdateState(this);
     }
 

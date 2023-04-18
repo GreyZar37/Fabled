@@ -21,6 +21,9 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler,IEnd
 
     public Market shop;
 
+    public AudioClip PickupSound;
+    public AudioClip DropSound;
+
     public void InitialiseItem(ItemScript newItem)
     {
         item = newItem;
@@ -40,6 +43,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler,IEnd
         image.raycastTarget = false;
         parentAfterDrag = transform.parent;
         transform.SetParent(playerCanvas.transform);
+        AudioManager.playSound(PickupSound, 1f);
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -53,8 +57,11 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler,IEnd
         transform.SetParent(parentAfterDrag);
         shop.CalculateSellValue();
         shop.CalculateBuyValue();
+        AudioManager.playSound(DropSound, 1f);
 
     }
+
+
 
     public void refreshCount()
     {

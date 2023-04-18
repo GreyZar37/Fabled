@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Pumpkin
   m_EditorClassIdentifier: 
   type: 1
-  actionType: 3
+  actionType: 2
   plant: {fileID: 9167769748906526846, guid: a97872e19dbfa4d4f91bc30b4b1d6bc1, type: 3}
   Sellvalue: 150
   BuyValue: 200
+  cropName: Pumpkin
   range: {x: 5, y: 4}
   stackable: 1
   Image: {fileID: 1400751949, guid: 425605848da07a242852d857650e047e, type: 3}

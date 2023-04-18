@@ -13,7 +13,10 @@ public class PlantWholeState : PlantBaseState
 
     public override void UpdateState(PlantStateManager plant)
     {
-
+        if(plant.currentGrowTime > plant.TimeToGrow * 2)
+        {
+            plant.SwitchState(plant.plantRottenState);
+        }
     }
 
 

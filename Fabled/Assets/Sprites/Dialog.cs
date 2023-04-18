@@ -10,7 +10,7 @@ public class Dialog : MonoBehaviour
     public TextMeshProUGUI textDisplay;
 
     public string[] sentences;
-    int index;
+    public int index;
 
     public float typingSpeed;
 
@@ -18,7 +18,24 @@ public class Dialog : MonoBehaviour
     public AudioClip pop;
 
     public Button continuebutton;
+   
     public GameObject DialogPanel;
+    public GameObject HotBar;
+
+    public AudioClip DialogSong;
+    public AudioClip lastSong;
+
+    public AudioClip pageFLip;
+
+
+    public Animator wolfAnim;
+
+    public bool talking;
+
+    public bool answerNedded;
+
+    public Button[] buttons;
+    public Button resumeButton;
 
     // Start is called before the first frame update
     void Start()
@@ -30,19 +47,47 @@ public class Dialog : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(textDisplay.text == sentences[index])
+
+        if (talking)
         {
-            continuebutton.enabled = true;
+            HotBar.SetActive(false);
+            DialogPanel.SetActive(true);
+        }
+
+        else {
+            HotBar.SetActive(true);
+            DialogPanel.SetActive(false);
+        }
+
+     
+
+    }
+    public IEnumerator Type()
+    {
+        if (!answerNedded)
+        {
+            resumeButton.gameObject.SetActive(true);
         }
         else
         {
-            continuebutton.enabled = false;
+            waitingForAnswer_();
+            resumeButton.gameObject.SetActive(false);
 
         }
+        wolfAnim.SetTrigger("Think");
 
-    }
-    IEnumerator Type()
-    {
+        if (talking == false)
+        {
+            lastSong = AudioManager.musicSource.clip;
+            AudioManager.musicSource.clip = DialogSong;
+            AudioManager.musicSource.Play();
+            GameManager.Instance.state = gameState.paused;
+
+        }
+        talking = true;
+        
+     
+
         foreach (var letter in sentences[index].ToCharArray())
         {
             AudioManager.playSound(pop, .2f);
@@ -55,7 +100,8 @@ public class Dialog : MonoBehaviour
   
     public void nextSentence()
     {
-        continuebutton.enabled = false;
+        AudioManager.playSound(pageFLip, 1f);
+     
 
         if (index < sentences.Length-1)
         {
@@ -66,9 +112,28 @@ public class Dialog : MonoBehaviour
         }
         else
         {
-            DialogPanel.SetActive(false);
             textDisplay.text = "";
-            continuebutton.enabled = false;
+            talking = false;
+            AudioManager.musicSource.clip = lastSong;
+            AudioManager.musicSource.Play();
+            GameManager.Instance.state = gameState.playing;
+
+        }
+    }
+
+    public void waitingForAnswer_()
+    {
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            buttons[i].gameObject.SetActive(true);
+        }
+    }
+
+    public void answered()
+    {
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            buttons[i].gameObject.SetActive(false);
         }
     }
 }

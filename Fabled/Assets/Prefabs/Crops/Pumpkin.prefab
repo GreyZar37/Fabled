@@ -100,8 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 2
-  DaysToGrow: 10
-  DaysLeft: 0
+  TimeToGrow: 600
+  currentGrowTime: 0
   plantSprite:
   - {fileID: -1909662571, guid: 2c68a49743ecd7d4caa4b9947bd01694, type: 3}
   - {fileID: -1082686879, guid: 13d646d819f14194284acd01fb39f6d7, type: 3}

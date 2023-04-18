@@ -29,6 +29,8 @@ public class ItemScript : ScriptableObject
     public int Sellvalue;
     public int BuyValue;
 
+    public string cropName;
+
     public Vector2Int range = new Vector2Int(5, 4);
     [Header("UI")]
     public bool stackable = true;

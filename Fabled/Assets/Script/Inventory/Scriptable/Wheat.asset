@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Wheat
   m_EditorClassIdentifier: 
   type: 1
-  actionType: 3
+  actionType: 2
   plant: {fileID: 9167769748906526846, guid: b0ce1f05e304a534bb98bf36ed483828, type: 3}
   Sellvalue: 7
   BuyValue: 10
+  cropName: Wheat
   range: {x: 5, y: 4}
   stackable: 1
   Image: {fileID: -28276070, guid: d640b480806f2c64da47edf2e31973a5, type: 3}

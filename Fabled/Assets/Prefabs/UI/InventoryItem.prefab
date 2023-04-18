@@ -91,12 +91,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85a3ccd63474cd44a90768e2ea682d90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  owned: 1
   item: {fileID: 0}
   count: 1
   image: {fileID: 8250866408290667817}
   textDisplayCount: {fileID: 577027117756695945}
   countBoarder: {fileID: 2664602180701124380}
   parentAfterDrag: {fileID: 0}
+  shop: {fileID: 0}
+  PickupSound: {fileID: 8300000, guid: 7c9a9988eb939d34195c74fc6ec6deed, type: 3}
+  DropSound: {fileID: 8300000, guid: 46d6e2d738859a44481cf42e558417cf, type: 3}
 --- !u!1 &2664602180701124380
 GameObject:
   m_ObjectHideFlags: 0

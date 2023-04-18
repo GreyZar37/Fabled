@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Potato
   m_EditorClassIdentifier: 
   type: 1
-  actionType: 3
+  actionType: 2
   plant: {fileID: 9167769748906526846, guid: 71ac8ebb1c664414587b7f0e3b3a1ad9, type: 3}
   Sellvalue: 10
   BuyValue: 20
+  cropName: Potato
   range: {x: 5, y: 4}
   stackable: 1
   Image: {fileID: 25894462, guid: 8d08a2c06644e41468cb3f9bc03675ea, type: 3}

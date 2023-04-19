@@ -48,8 +48,7 @@ public class DayAndNight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(GameManager.Instance.state != gameState.paused)
-        {
+       
             currentTime -= Time.deltaTime;
            
             Arrow.transform.rotation = Quaternion.Euler(0, 0, (currentTime * minutesToDegrees) / wholeDay);
@@ -81,7 +80,6 @@ public class DayAndNight : MonoBehaviour
                 rain.Stop();
                 songChanged = false;
             }
-        }
 
        
 

@@ -48,7 +48,7 @@ public class HarvestingScp : MonoBehaviour
         {
             if(hit.transform.GetComponent<PlantStateManager>() != null)
             {
-                if (hit.transform.tag == "Plant" && hit.transform.GetComponent<PlantStateManager>().fullyGorwn && distance <= 1)
+                if (hit.transform.tag == "Plant" && hit.transform.GetComponent<PlantStateManager>().fullyGorwn && distance <= 3)
                 {
 
                     currentPlant = hit.transform.gameObject;

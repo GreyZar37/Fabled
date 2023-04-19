@@ -5,7 +5,7 @@ using TMPro;
 
 public enum gameState
 {
-    playing, paused
+    playing, paused, inInventory
 }
 public class GameManager : MonoBehaviour
 {
@@ -40,11 +40,14 @@ public class GameManager : MonoBehaviour
             {
                 Inventory.SetActive(false);
                 ButtonInventory.SetActive(true);
+                state = gameState.playing;
+
             }
             else
             {
                 Inventory.SetActive(true);
                 ButtonInventory.SetActive(false);
+                state = gameState.inInventory;
 
             }
         }

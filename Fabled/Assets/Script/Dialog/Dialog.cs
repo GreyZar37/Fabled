@@ -1,7 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class Dialog : MonoBehaviour
@@ -18,7 +17,7 @@ public class Dialog : MonoBehaviour
     public AudioClip pop;
 
     public Button continuebutton;
-   
+
     public GameObject DialogPanel;
     public GameObject HotBar;
 
@@ -34,13 +33,23 @@ public class Dialog : MonoBehaviour
 
     public bool answerNedded;
 
-    public Button[] buttons;
+    public Button buyButton;
+    public Button returnButton;
+
     public Button resumeButton;
 
     public GameObject character;
+
+
+
+
+    public GameObject shopPanel;
+    public GameObject PlayerStats;
+    public GameObject PlayerInventory;
+
     // Start is called before the first frame update
 
-   
+
     // Update is called once per frame
     void Update()
     {
@@ -51,18 +60,24 @@ public class Dialog : MonoBehaviour
             DialogPanel.SetActive(true);
         }
 
-        else {
+        else
+        {
             HotBar.SetActive(true);
             DialogPanel.SetActive(false);
         }
 
-        if(textDisplay.text != sentences[index])
+        if (textDisplay.text != sentences[index])
         {
             resumeButton.interactable = false;
+            buyButton.interactable = false;
+            returnButton.interactable = false;
+
         }
         else
         {
             resumeButton.interactable = true;
+            buyButton.interactable = true;
+            returnButton.interactable = true;
 
         }
 
@@ -72,16 +87,7 @@ public class Dialog : MonoBehaviour
     {
         AudioManager.playSound(PersonTalk, 1);
 
-        if (!answerNedded)
-        {
-            resumeButton.gameObject.SetActive(true);
-        }
-        else
-        {
-            waitingForAnswer_();
-            resumeButton.gameObject.SetActive(false);
 
-        }
         character.SetActive(true);
 
         PersonAnim.SetTrigger("Think");
@@ -95,8 +101,8 @@ public class Dialog : MonoBehaviour
 
         }
         talking = true;
-        
-     
+
+
 
         foreach (var letter in sentences[index].ToCharArray())
         {
@@ -107,14 +113,21 @@ public class Dialog : MonoBehaviour
         }
     }
 
-  
+
     public void nextSentence()
     {
         AudioManager.playSound(pageFLip, 1f);
-     
-
-        if (index < sentences.Length-1)
+        
+       
+         if (index < sentences.Length - 1)
         {
+            if (index >= sentences.Length - 2 && answerNedded)
+            {
+                resumeButton.gameObject.SetActive(false);
+                buyButton.gameObject.SetActive(true);
+                returnButton.gameObject.SetActive(true);
+            }
+
             index++;
             textDisplay.text = "";
             StartCoroutine(Type());
@@ -131,19 +144,37 @@ public class Dialog : MonoBehaviour
         }
     }
 
-    public void waitingForAnswer_()
+    public void openShop()
     {
-        for (int i = 0; i < buttons.Length; i++)
-        {
-            buttons[i].gameObject.SetActive(true);
-        }
+        shopPanel.SetActive(true);
+        PlayerStats.SetActive(false);
+       
+        PlayerInventory.SetActive(true);
+        buyButton.gameObject.SetActive(false);
+        returnButton.gameObject.SetActive(false);
+
+        textDisplay.text = "";
+
+        answerNedded = false;
     }
 
-    public void answered()
+    public void returnFromShop()
     {
-        for (int i = 0; i < buttons.Length; i++)
-        {
-            buttons[i].gameObject.SetActive(false);
-        }
+        resumeButton.gameObject.SetActive(true);
+        buyButton.gameObject.SetActive(false);
+        returnButton.gameObject.SetActive(false);
+
+        shopPanel.SetActive(false);
+        PlayerStats.SetActive(true);
+        PlayerInventory.SetActive(false);
+
+        answerNedded = false;
+
+        textDisplay.text = "";
+        talking = false;
+        AudioManager.musicSource.clip = lastSong;
+        AudioManager.musicSource.Play();
+        GameManager.Instance.state = gameState.playing;
+        character.SetActive(false);
     }
 }

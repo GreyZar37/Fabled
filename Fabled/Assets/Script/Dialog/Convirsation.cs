@@ -6,9 +6,6 @@ using UnityEngine.UI;
 public struct sentence
 {
     public string[] sentences;
-    public bool answerNeeded;
-
-
 }
 public class Convirsation : MonoBehaviour
 {
@@ -25,12 +22,19 @@ public class Convirsation : MonoBehaviour
     public GameObject characterModel;
 
     bool talked;
-    bool waitingForAnswer;
+
+    public GameObject buyButton;
+    public GameObject returnutton;
 
     [SerializeField]bool volk;
-    // Start is called before the first frame update
-  
+
+
+
+    public GameObject shopPanel;
    
+    // Start is called before the first frame update
+
+
     private void Start()
     {
         if (volk)
@@ -47,15 +51,33 @@ public class Convirsation : MonoBehaviour
 
     public void startConvi()
     {
+        if (!talked)
+        {
+            dialog.sentences = differentConvi[0].sentences;
+            talked = true;
+        }
+        else
+        {
+
+            if (!volk)
+            {
+                dialog.answerNedded = true;
+                dialog.sentences = differentConvi[1].sentences;
+
+            }
+            
+        }
         dialog.DialogSong = music;
         dialog.PersonAnim = characterAnim;
         dialog.character = characterModel;
         dialog.PersonTalk = talkSound;
 
+        dialog.shopPanel = shopPanel;
 
         dialog.index = 0;
-        dialog.sentences = differentConvi[0].sentences;
-        dialog.answerNedded = differentConvi[0].answerNeeded;
+
+       
+
         StartCoroutine(dialog.Type());
 
     }
@@ -66,7 +88,13 @@ public class Convirsation : MonoBehaviour
     {
             if(collision.gameObject.tag == "Player")
         {
+            if(!volk)
             startConvi();
         }
+    }
+
+    public void returnFromShop()
+    {
+        dialog.returnFromShop();
     }
 }

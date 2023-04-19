@@ -34,6 +34,8 @@ public class WolfMission : MonoBehaviour
     public Animator volkAnim;
 
     public GameObject missionBouble;
+
+    public Convirsation convi;
     // Start is called before the first frame update
     void Start()
     {
@@ -80,11 +82,10 @@ public class WolfMission : MonoBehaviour
     {
         if(GameManager.Instance.money > missions[missionNumb].moneyNedded && !DayAndNight.Instance.raining)
         {
-            dialog.index = 0;
             dialog.sentences = missions[missionNumb].dialogText;
-            dialog.StartCoroutine(dialog.Type());
             GameManager.Instance.money -= missions[missionNumb].moneyNedded;
             missionNumb++;
+            convi.startConvi();
         }
     }
 }

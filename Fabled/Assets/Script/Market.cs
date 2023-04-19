@@ -33,9 +33,7 @@ public class Market : MonoBehaviour
     public AudioClip buySound;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        shopPanel.SetActive(true);
-        PlayerStats.SetActive(false);
-        PlayerInventory.SetActive(true);
+      
     }
 
     private void OnTriggerExit2D(Collider2D collision)

@@ -42,7 +42,9 @@ public class DayAndNight : MonoBehaviour
            currentTime = wholeDay *60;
 
         Light.color = dayColor;
-        flashLight.color = nightColor;
+
+        if (flashLight != null)
+            flashLight.color = nightColor;
     }
 
     // Update is called once per frame
@@ -51,10 +53,13 @@ public class DayAndNight : MonoBehaviour
        
             currentTime -= Time.deltaTime;
            
+        if(Arrow != null)
             Arrow.transform.rotation = Quaternion.Euler(0, 0, (currentTime * minutesToDegrees) / wholeDay);
 
-            Light.color = Color.Lerp(dayColor, nightColor, Mathf.PingPong(Time.time / (wholeDay * 30), 1));
-            flashLight.color = Color.Lerp(nightColor, dayColor, Mathf.PingPong(Time.time / (wholeDay * 30), 1));
+            Light.color = Color.Lerp(dayColor, nightColor, Mathf.PingPong(Time.timeSinceLevelLoad / (wholeDay * 30), 1));
+
+        if (flashLight != null)
+            flashLight.color = Color.Lerp(nightColor, dayColor, Mathf.PingPong(Time.timeSinceLevelLoad / (wholeDay * 30), 1));
 
             if (currentTime < 0)
             {
@@ -62,7 +67,8 @@ public class DayAndNight : MonoBehaviour
                 day++;
             }
 
-            if (raining == false && day % 3 == 0)
+
+            if (raining == false && day % 3 == 0 && rain != null)
             {
                 raining = true;
                 rain.Play();
@@ -72,7 +78,7 @@ public class DayAndNight : MonoBehaviour
 
                 songChanged = true;
             }
-            else if (raining == true && songChanged == true && day % 3 != 0)
+            else if (raining == true && songChanged == true && day % 3 != 0 &&  rain != null)
             {
                 AudioManager.musicSource.clip = lastSong;
                 AudioManager.musicSource.Play();

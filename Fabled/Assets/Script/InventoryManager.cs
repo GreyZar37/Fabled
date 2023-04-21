@@ -49,7 +49,12 @@ public class InventoryManager : MonoBehaviour
             InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
             if (itemInSlot != null && itemInSlot.item == item && itemInSlot.count < maxtStack && itemInSlot.item.stackable)
             {
-                itemInSlot.count++;
+                itemInSlot.count += (int)Random.Range(item.randomAmount.x, item.randomAmount.y);
+
+                if (itemInSlot.count > 16)
+                {
+                    itemInSlot.count = 16;
+                }
                 itemInSlot.refreshCount();
                 return true;
             }

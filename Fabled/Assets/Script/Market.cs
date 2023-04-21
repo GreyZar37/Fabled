@@ -7,6 +7,7 @@ public class Market : MonoBehaviour
     public InventoryManager inventoryManager;
     public GameObject shopPanel;
     public GameObject PlayerStats;
+
     public GameObject PlayerInventory;
 
     public GameObject[] itemsForSale;
@@ -31,15 +32,15 @@ public class Market : MonoBehaviour
     public int buyValue;
 
     public AudioClip buySound;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-      
+
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         PlayerInventory.SetActive(false);
-
         PlayerStats.SetActive(true);
         shopPanel.SetActive(false);
         returnItemToShopSlots();
@@ -52,7 +53,7 @@ public class Market : MonoBehaviour
     }
     private void Update()
     {
-        sellValueText.text = "$" + sellValue.ToString();
+        sellValueText.text = "$" + ((int)(sellValue * UpgradeShop.instance.moneyMultiplier)).ToString();
         buyValueText.text = "$" + buyValue.ToString();
 
         playerMoneyText.text = "$" + GameManager.Instance.money.ToString();
@@ -115,10 +116,11 @@ public class Market : MonoBehaviour
     {
         foreach (var item in itemsSelling)
         {
-            GameManager.Instance.money += item.item.Sellvalue * item.count;
             Destroy(item.gameObject);
 
         }
+        GameManager.Instance.money += (int)((sellValue * UpgradeShop.instance.moneyMultiplier));
+
         sellValue = 0;
         itemsSelling.Clear();
         AudioManager.playSound(buySound, 1f);

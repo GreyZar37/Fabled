@@ -17,6 +17,9 @@ MonoBehaviour:
   plant: {fileID: 9167769748906526846, guid: b0ce1f05e304a534bb98bf36ed483828, type: 3}
   Sellvalue: 2
   BuyValue: 4
+  growTimer: 120
+  cropName: Wheat Seed
+  randomAmount: {x: 1, y: 3}
   range: {x: 5, y: 4}
   stackable: 1
   Image: {fileID: -2102717412, guid: c65f8dcefb9c98a47a309a39bd5262c7, type: 3}

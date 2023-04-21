@@ -62,7 +62,7 @@ public class PlayerMovement : MonoBehaviour
             vertical = 0;
         }
 
-        rb.velocity = new Vector2(horizontal, vertical).normalized * speed;
+        rb.velocity = new Vector2(horizontal, vertical).normalized * (speed * UpgradeShop.instance.speedMultiplier);
         anim.SetFloat("Velocity", Mathf.Abs(horizontal) + Mathf.Abs(vertical));
 
 

@@ -17,6 +17,9 @@ MonoBehaviour:
   plant: {fileID: 9167769748906526846, guid: 71ac8ebb1c664414587b7f0e3b3a1ad9, type: 3}
   Sellvalue: 5
   BuyValue: 10
+  growTimer: 180
+  cropName: Potato Seed
+  randomAmount: {x: 1, y: 4}
   range: {x: 5, y: 4}
   stackable: 1
   Image: {fileID: 2088259608, guid: c48d9ab4a527f214ebc3274d0f2adc99, type: 3}

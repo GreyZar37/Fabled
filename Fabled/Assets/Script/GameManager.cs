@@ -22,9 +22,11 @@ public class GameManager : MonoBehaviour
     public GameObject Inventory;
     public GameObject ButtonInventory;
 
+    public Discription box;
     // Start is called before the first frame update
     void Start()
     {
+
         Instance = this;
     }
 
@@ -39,14 +41,12 @@ public class GameManager : MonoBehaviour
             if (Inventory.activeInHierarchy)
             {
                 Inventory.SetActive(false);
-                ButtonInventory.SetActive(true);
                 state = gameState.playing;
-
+                box.DiscriptionBox.gameObject.SetActive(false);
             }
             else
             {
                 Inventory.SetActive(true);
-                ButtonInventory.SetActive(false);
                 state = gameState.inInventory;
 
             }

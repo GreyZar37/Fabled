@@ -17,7 +17,9 @@ MonoBehaviour:
   plant: {fileID: 9167769748906526846, guid: d063ea3a37d8f3940a3c77297645e23a, type: 3}
   Sellvalue: 40
   BuyValue: 75
+  growTimer: 240
   cropName: Eggplant
+  randomAmount: {x: 1, y: 1}
   range: {x: 5, y: 4}
   stackable: 1
   Image: {fileID: 1627357414, guid: c51c6874de6854d4fb55332c89c1286c, type: 3}

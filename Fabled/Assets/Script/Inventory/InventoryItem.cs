@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
-public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler,IEndDragHandler
+public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler,IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
      public bool owned = true;
      public ItemScript item;
@@ -20,6 +20,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler,IEnd
     Canvas playerCanvas;
 
     public Market shop;
+    public Discription box;
 
     public AudioClip PickupSound;
     public AudioClip DropSound;
@@ -37,6 +38,8 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler,IEnd
         refreshCount();
         playerCanvas = GameObject.FindGameObjectWithTag("PlayerCanvas").GetComponent<Canvas>();
         shop = GameObject.FindAnyObjectByType<Market>();
+        box = GameObject.FindAnyObjectByType<Discription>();
+
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -78,5 +81,45 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler,IEnd
         }
     }
 
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (item.type != ItemType.tool)
+        {
+            discriptionInfo(box);
+            box.DiscriptionBox.gameObject.SetActive(true);
+        }
 
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        if(item.type != ItemType.tool)
+            box.DiscriptionBox.gameObject.SetActive(false);
+    }
+
+    public void discriptionInfo(Discription box)
+    {
+        box.Icon.sprite = item.Image;
+
+        if(item.type == ItemType.seed)
+        {
+            box.growingTimeText.text = "Growing time: " + item.growTimer.ToString() + "s";
+
+        }
+        else
+        {
+            box.growingTimeText.text = "";
+
+        }
+
+        if (owned)
+        {
+            box.priceText.text = ((int)((item.Sellvalue * count) * UpgradeShop.instance.moneyMultiplier)).ToString();
+        }
+        else
+        {
+            box.priceText.text = (item.BuyValue * count).ToString();
+        }
+        box.nameText.text = item.cropName;
+    }
 }

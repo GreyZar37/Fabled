@@ -17,6 +17,9 @@ MonoBehaviour:
   plant: {fileID: 9167769748906526846, guid: a97872e19dbfa4d4f91bc30b4b1d6bc1, type: 3}
   Sellvalue: 50
   BuyValue: 100
+  growTimer: 600
+  cropName: Pumpkin Seed
+  randomAmount: {x: 1, y: 1}
   range: {x: 5, y: 4}
   stackable: 1
   Image: {fileID: -1909662571, guid: 2c68a49743ecd7d4caa4b9947bd01694, type: 3}

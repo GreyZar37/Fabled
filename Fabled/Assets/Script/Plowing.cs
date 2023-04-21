@@ -43,7 +43,7 @@ public class Plowing : MonoBehaviour
         float distance = Vector2.Distance(Camera.main.ScreenToWorldPoint(Input.mousePosition), transform.position);
 
 
-        if (Input.GetMouseButtonDown(0) && distance <= 3 && PlayerMovement.currentPlayerState == playerState.idle && GameManager.Instance.state == gameState.playing)
+        if (Input.GetMouseButtonDown(0) && distance <= (3 * UpgradeShop.instance.longerPlowReachMultiplier) && PlayerMovement.currentPlayerState == playerState.idle && GameManager.Instance.state == gameState.playing)
         {
             Vector3Int position = GetMousePosition();
 

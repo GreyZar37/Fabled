@@ -54,17 +54,13 @@ public class Dialog : MonoBehaviour
     void Update()
     {
 
-        if (talking)
-        {
-            HotBar.SetActive(false);
-            DialogPanel.SetActive(true);
-        }
-
-        else
+        if (!talking)
         {
             HotBar.SetActive(true);
             DialogPanel.SetActive(false);
         }
+
+       
 
         if (textDisplay.text != sentences[index])
         {
@@ -86,6 +82,7 @@ public class Dialog : MonoBehaviour
     public IEnumerator Type()
     {
         AudioManager.playSound(PersonTalk, 1);
+        HotBar.SetActive(false);
 
 
         character.SetActive(true);
@@ -117,9 +114,9 @@ public class Dialog : MonoBehaviour
     public void nextSentence()
     {
         AudioManager.playSound(pageFLip, 1f);
-        
-       
-         if (index < sentences.Length - 1)
+
+
+        if (index < sentences.Length - 1)
         {
             if (index >= sentences.Length - 2 && answerNedded)
             {
@@ -134,6 +131,7 @@ public class Dialog : MonoBehaviour
         }
         else
         {
+
             textDisplay.text = "";
             talking = false;
             AudioManager.musicSource.clip = lastSong;
@@ -148,7 +146,8 @@ public class Dialog : MonoBehaviour
     {
         shopPanel.SetActive(true);
         PlayerStats.SetActive(false);
-       
+        HotBar.SetActive(true);
+
         PlayerInventory.SetActive(true);
         buyButton.gameObject.SetActive(false);
         returnButton.gameObject.SetActive(false);
@@ -156,6 +155,8 @@ public class Dialog : MonoBehaviour
         textDisplay.text = "";
 
         answerNedded = false;
+        DialogPanel.SetActive(false);
+
     }
 
     public void returnFromShop()

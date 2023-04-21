@@ -32,7 +32,7 @@ public class CropSpawner : MonoBehaviour
         }
 
 
-        if(cropsSpawned.Count < 10)
+        if(cropsSpawned.Count < ((int)(10 * UpgradeShop.instance.plantGrowAmountMultipier)))
         {
             Vector2 randomPos = giveRandomPos();
             cropsSpawned.Add(Instantiate(giveRandomCrop(), new Vector2(randomPos.x, randomPos.y), Quaternion.identity));

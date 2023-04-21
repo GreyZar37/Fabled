@@ -29,7 +29,7 @@ public class PlantStateManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        TimeToGrow *= UpgradeShop.instance.plantGrowAmountMultipier;
 
         currentState = GrowingState;
 

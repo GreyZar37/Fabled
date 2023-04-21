@@ -31,7 +31,7 @@ public class Convirsation : MonoBehaviour
 
 
     public GameObject shopPanel;
-   
+
     // Start is called before the first frame update
 
 
@@ -51,6 +51,7 @@ public class Convirsation : MonoBehaviour
 
     public void startConvi()
     {
+        dialog.DialogPanel.SetActive(true);
         if (!talked)
         {
             dialog.sentences = differentConvi[0].sentences;
@@ -61,7 +62,11 @@ public class Convirsation : MonoBehaviour
 
             if (!volk)
             {
-                dialog.answerNedded = true;
+                if(shopPanel != null)
+                {
+                    dialog.answerNedded = true;
+
+                }
                 dialog.sentences = differentConvi[1].sentences;
 
             }
@@ -72,7 +77,10 @@ public class Convirsation : MonoBehaviour
         dialog.character = characterModel;
         dialog.PersonTalk = talkSound;
 
-        dialog.shopPanel = shopPanel;
+        
+            dialog.shopPanel = shopPanel;
+
+        
 
         dialog.index = 0;
 

@@ -28,8 +28,10 @@ public class ItemScript : ScriptableObject
     public GameObject plant;
     public int Sellvalue;
     public int BuyValue;
+    public int growTimer;
 
     public string cropName;
+    public Vector2 randomAmount;
 
     public Vector2Int range = new Vector2Int(5, 4);
     [Header("UI")]
@@ -38,5 +40,4 @@ public class ItemScript : ScriptableObject
 
     [Header("All")]
     public Sprite Image;
-
 }

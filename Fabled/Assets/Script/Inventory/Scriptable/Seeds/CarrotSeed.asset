@@ -17,6 +17,9 @@ MonoBehaviour:
   plant: {fileID: 9167769748906526846, guid: 321c33062e8ba4d4bae4762a20fdd11f, type: 3}
   Sellvalue: 1
   BuyValue: 2
+  growTimer: 60
+  cropName: Carrot Seed
+  randomAmount: {x: 1, y: 1}
   range: {x: 5, y: 4}
   stackable: 1
   Image: {fileID: -598647638, guid: 2b0bcf9fffa54e94c859510656c9faa0, type: 3}
